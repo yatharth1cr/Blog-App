@@ -3,10 +3,8 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <header className="flex space-between item-center">
-      <Link to="/" className="bold">
-        BLOG
-      </Link>
+    <header className="bold flex space-between item-center">
+      <Link to="/">BLOG</Link>
       <nav className="">
         <Link to="/">Home</Link>
         <Link to="/login">Login</Link>

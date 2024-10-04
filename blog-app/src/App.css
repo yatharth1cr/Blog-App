@@ -132,6 +132,10 @@ table {
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #373a3c;
+  letter-spacing: 0.25px;
 }
 
 /* common */
@@ -218,7 +222,8 @@ input {
   margin: 0.5rem 0;
 }
 
-button {
+.signup-btn,
+.login-btn {
   width: 100%;
   padding: 1rem;
   margin: 1rem 0;
@@ -229,7 +234,8 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.signup-btn:hover,
+.login-btn:hover {
   background-color: rgb(57, 122, 243);
 }
 
@@ -247,4 +253,111 @@ button:hover {
   font-weight: bold;
   font-size: 3.5rem;
   padding-bottom: 0.5rem;
+}
+
+/* article  */
+article {
+  width: 70%;
+  margin: 1rem;
+}
+
+.article-preview {
+  padding: 1.5rem;
+  border-bottom: 1px solid #aaa;
+}
+
+.article-preview img {
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.article-info {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+.article-info a {
+  color: cornflowerblue;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  /* margin-bottom: 4px; */
+}
+
+.like-button {
+  border: 1px solid cornflowerblue;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.like-button:hover {
+  background-color: cornflowerblue;
+  color: #fff;
+  cursor: pointer;
+}
+
+.article-info-preview {
+  text-decoration: none;
+  color: #aaa;
+}
+
+.article-info-preview h1 {
+  color: black;
+  padding: 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.article-info-preview p {
+  font-size: 1rem;
+  font-weight: 100;
+}
+
+.article-bottom {
+  margin-top: 1rem;
+}
+
+.article-bottom span {
+  font-size: 0.9rem;
+}
+
+.tag-list li {
+  font-weight: 300;
+  color: #aaa;
+  font-size: 12px;
+  border: 1px solid #ddd;
+  padding: 0.25rem;
+  border-radius: 1rem;
+  margin: 0 2px;
+}
+
+.sidebar {
+  width: 25%;
+}
+
+.parent-tags {
+  padding: 1rem;
+  width: 200px;
+  background-color: #f3f3f3;
+  /* color: #fff; */
+}
+
+.parent-tags p {
+  margin-bottom: 0.5rem;
+}
+
+.parent-tags a {
+  font-size: 0.9rem;
+  text-decoration: none;
+  background-color: #818a91;
+  padding: 3px;
+  margin: 3px;
+  color: #fff;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.parent-tags a:hover {
+  background-color: #636a6f;
 }

@@ -24,7 +24,7 @@ function SignUp() {
   };
 
   return (
-    <form className="signup flex column text-center" onSubmit={handleSubmit}>
+    <form className="flex column text-center" onSubmit={handleSubmit}>
       <h1 className="bold">Signup</h1>
       <input
         type="text"
@@ -43,7 +43,7 @@ function SignUp() {
         onChange={(e) => setPassword(e.target.value)}
       />
       {error && <p style={{ color: "red" }}>{error}</p>}
-      <button className="bold">Signup</button>
+      <button className="signup-btn bold">Signup</button>
     </form>
   );
 }

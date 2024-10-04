@@ -18,13 +18,13 @@ function Login() {
     } else {
       setError(""); // Clear the error if validation passes
 
-      // Proceed with form submission logic (e.g., call an API)
+      // Proceed with form submission
       console.log("Form submitted successfully!", { email, password });
     }
   };
 
   return (
-    <form className="login flex column text-center">
+    <form className="flex column text-center">
       <h1 className="bold">Login</h1>
       <input
         type="text"
@@ -43,7 +43,7 @@ function Login() {
         onChange={(e) => setPassword(e.target.value)}
       />
       {error && <p style={{ color: "red" }}>{error}</p>}
-      <button className="bold" onSubmit={handleSubmit}>
+      <button className="login-btn bold" onSubmit={handleSubmit}>
         Login
       </button>
     </form>
