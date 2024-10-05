@@ -24,6 +24,14 @@ function Home() {
       });
   }, []);
 
+  if (!articles) {
+    return (
+      <>
+        <Banner />
+        <p>Loading...</p>;
+      </>
+    );
+  }
   return (
     <>
       <Banner />
