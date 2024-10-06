@@ -1,8 +1,8 @@
-function Banner() {
+function Banner(props) {
   return (
-    <div className="banner">
-      <h1>Banner</h1>
-      <p>A place to share your knowledge.</p>
+    <div style={{ backgroundColor: props.bgColor }} className="banner">
+      <h1>{props.head}</h1>
+      <p>{props.meta}</p>
     </div>
   );
 }

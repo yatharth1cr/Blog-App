@@ -1,11 +1,11 @@
-// import { useState } from "react";
+import Banner from "./Banner";
 
 function Article(props) {
-  // const [article, setArticle] = useState("");
-
   return (
-    <article>
-      <></>
+    <article className="article-page">
+      <div>
+        <Banner head={props} bgColor={"#333"} meta={props} />
+      </div>
     </article>
   );
 }

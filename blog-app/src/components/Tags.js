@@ -26,7 +26,7 @@ function Tags() {
       <div className="parent-tags">
         <p>Popular Tags</p>
         {tags.map((tag, i) => (
-          <a href="/" key={i}>
+          <a href={tag} key={i}>
             {tag}
           </a>
         ))}
