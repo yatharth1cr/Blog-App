@@ -21,6 +21,9 @@ function Tags() {
       });
   }, []);
 
+  if (!tags) {
+    return <p>Loading...</p>;
+  }
   return (
     <aside className="sidebar">
       <div className="parent-tags">
