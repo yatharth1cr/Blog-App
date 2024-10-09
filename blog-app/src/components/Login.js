@@ -19,7 +19,7 @@ function Login() {
       setError(""); // Clear the error if validation passes
 
       // Proceed with form submission
-      console.log("Form submitted successfully!", { email, password });
+      console.log("Logged In successfully!", { email, password });
     }
   };
 

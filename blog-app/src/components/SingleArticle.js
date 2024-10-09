@@ -1,6 +1,10 @@
+import { useState } from "react";
 import Banner from "./Banner";
 
-function Article(props) {
+function SingleArticle(props) {
+  const [article, setArticle] = useState(null);
+  const [error, setError] = useState("");
+
   return (
     <article className="article-page">
       <div>
@@ -10,4 +14,4 @@ function Article(props) {
   );
 }
 
-export default Article;
+export default SingleArticle;

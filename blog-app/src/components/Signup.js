@@ -18,8 +18,8 @@ function SignUp() {
     } else {
       setError(""); // Clear the error if validation passes
 
-      // Proceed with form submission logic (e.g., call an API)
-      console.log("Form submitted successfully!", { email, password });
+      // Proceed with form submission logic
+      console.log("SignedUp successfully!", { email, password });
     }
   };
 
