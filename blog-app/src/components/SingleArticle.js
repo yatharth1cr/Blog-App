@@ -1,9 +1,9 @@
-import { useState } from "react";
+// import { useState } from "react";
 import Banner from "./Banner";
 
 function SingleArticle(props) {
-  const [article, setArticle] = useState(null);
-  const [error, setError] = useState("");
+  // const [article, setArticle] = useState(null);
+  // const [error, setError] = useState("");
 
   return (
     <article className="article-page">

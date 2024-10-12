@@ -7,7 +7,7 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    event.target.value = "";
     // Validation logic
     if (!email || !password) {
       setError("Both fields are required");
