@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import { ApiService } from "../services/apiService";
+import { loginURL } from "../constant/const";
 
 function Login() {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   let [error, setError] = useState("");
+  let [LoginMessage, setLoginMessage] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    event.target.value = "";
+    // event.target.value = "";
     // Validation logic
     if (!email || !password) {
       setError("Both fields are required");
@@ -21,10 +24,24 @@ function Login() {
       // Proceed with form submission
       console.log("Logged In successfully!", { email, password });
     }
+    login({ email, password });
+  };
+
+  let login = async (data) => {
+    let loginData = await ApiService.postReq(loginURL, data);
+    if (loginData["error"]) {
+      setLoginMessage(loginData["message"]);
+    } else {
+      setLoginMessage(loginData["message"]);
+    }
   };
 
   return (
-    <form className="flex column text-center">
+    <form
+      className="flex column text-center"
+      onSubmit={handleSubmit}
+      method="POST"
+    >
       <h1 className="bold">Login</h1>
       <input
         type="text"

@@ -17,7 +17,7 @@ function Home() {
         return res.json();
       })
       .then((data) => {
-        // console.log(data, "Data checkkk");
+        console.log(data, "Data checkkk");
         setArticles(data.articles);
       })
       .catch((err) => {
@@ -29,7 +29,7 @@ function Home() {
     return (
       <>
         <Banner />
-        <p>Loading...</p>;
+        <p>Loading...</p>
       </>
     );
   }
