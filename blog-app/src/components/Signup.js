@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ApiService } from "../services/apiService";
 import { signupURL } from "../constant/const";
+import Toastify from "./Toastify";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -23,7 +24,6 @@ function SignUp() {
 
       // Proceed with form submission logic
       console.log("SignedUp successfully!", signupMessage, { email, password });
-
       signup({ email, password });
     }
   };
@@ -34,6 +34,7 @@ function SignUp() {
     if (signupData["error"]) {
       setSignupMessage(signupData["message"]);
     } else {
+      console.log(<Toastify />);
       setSignupMessage(signupData["message"]);
     }
   };
