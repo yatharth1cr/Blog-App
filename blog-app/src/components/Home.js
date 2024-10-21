@@ -12,16 +12,15 @@ function Home() {
     fetch(articleUrl)
       .then((res) => {
         if (!res.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error(`HTTP error! status: ${res.status}`);
         }
         return res.json();
       })
       .then((data) => {
-        console.log(data, "Data checkkk");
         setArticles(data.articles);
       })
       .catch((err) => {
-        console.log("Error:", err);
+        console.error("Fetch error:", err);
       });
   }, []);
 

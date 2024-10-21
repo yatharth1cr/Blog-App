@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ApiService } from "../services/apiService";
 import { loginURL } from "../constant/const";
+import toast, { Toaster } from "react-hot-toast";
 
 function Login() {
   let [email, setEmail] = useState("");
@@ -11,19 +12,22 @@ function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // event.target.value = "";
-    // Validation logic
-    if (!email || !password) {
-      setError("Both fields are required");
-    } else if (!email.includes("@gmail.com")) {
-      setError("Email must contain @gmail.com");
-    } else if (password.length < 6) {
-      setError("Password must be at least 6 characters long");
-    } else {
-      setError(""); // Clear the error if validation passes
 
-      // Proceed with form submission
-      console.log("Logged In successfully!", { email, password });
+    let error = "";
+    switch (true) {
+      case !email || !password:
+        error = "Both fields are required";
+        break;
+      case password.length < 6:
+        error = "Invalid Password!";
+        setPassword("");
+        break;
+      default:
+        error = ""; // Clear the error if validation passes
     }
+    setError(error);
+
+    console.log(LoginMessage, { email, password });
     login({ email, password });
   };
 
@@ -31,8 +35,20 @@ function Login() {
     let loginData = await ApiService.postReq(loginURL, data);
     if (loginData["error"]) {
       setLoginMessage(loginData["message"]);
+      toast.error(loginData["message"]);
     } else {
       setLoginMessage(loginData["message"]);
+      toast.success(loginData["message"]);
+
+      // saved token in localStorage
+      const token = loginData.body.token;
+      localStorage.setItem("authToken", token);
+
+      console.log(loginData.body.token, "token checkkkk");
+
+      // clear form after loggedIn
+      setEmail("");
+      setPassword("");
     }
   };
 
@@ -48,7 +64,7 @@ function Login() {
         name="email"
         id="loginEmail"
         placeholder="Email"
-        value={email}
+        value={email.trim()}
         onChange={(e) => setEmail(e.target.value)}
       />
       <input
@@ -56,13 +72,12 @@ function Login() {
         name="password"
         id="password"
         placeholder="Password"
-        value={password}
+        value={password.trim()}
         onChange={(e) => setPassword(e.target.value)}
       />
       {error && <p style={{ color: "red" }}>{error}</p>}
-      <button className="login-btn bold" onSubmit={handleSubmit}>
-        Login
-      </button>
+      <button className="login-btn bold">Login</button>
+      <Toaster />
     </form>
   );
 }

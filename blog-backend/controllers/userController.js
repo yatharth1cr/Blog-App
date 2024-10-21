@@ -10,7 +10,6 @@ const registerController = async (req, res) => {
     const { email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await UserModel.create({ email, password: hashedPassword });
-    res.redirect("/login");
     res.status(200).send({
       error: false,
       message: "User registered successfully",
@@ -23,7 +22,6 @@ const registerController = async (req, res) => {
 
 const loginController = async (req, res) => {
   try {
-    console.log(req.body, "sdjknfddsjfna");
     const { email, password } = req.body;
     const user = await UserModel.findOne({ email });
 

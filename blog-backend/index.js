@@ -14,7 +14,7 @@ app.use(cors());
 app.use("/user-service", userRouter);
 
 app.get("/", (req, res) => {
-  res.status(200).send("<h2>Homepage</h2>");
+  res.status(200).send("<h1>HOMEPAGE</h1>");
 });
 
 app.listen(PORT, async () => {

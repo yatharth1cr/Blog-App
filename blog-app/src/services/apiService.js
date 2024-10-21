@@ -8,10 +8,7 @@ class ApiService {
       headers: fetchHeaders,
     })
       .then((res) => res.json())
-      .then((res) => {
-        console.log(typeof res, "typeeee");
-        return res;
-      })
+      .then((res) => res)
       .catch((err) => err);
   }
 

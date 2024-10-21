@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ApiService } from "../services/apiService";
 import { signupURL } from "../constant/const";
-import Toastify from "./Toastify";
+import toast, { Toaster } from "react-hot-toast";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -23,7 +23,7 @@ function SignUp() {
       setError(""); // Clear the error if validation passes
 
       // Proceed with form submission logic
-      console.log("SignedUp successfully!", signupMessage, { email, password });
+      console.log(signupMessage, { email, password });
       signup({ email, password });
     }
   };
@@ -33,9 +33,10 @@ function SignUp() {
     const signupData = await ApiService.postReq(signupURL, data);
     if (signupData["error"]) {
       setSignupMessage(signupData["message"]);
+      toast.error(signupData["message"]);
     } else {
-      console.log(<Toastify />);
       setSignupMessage(signupData["message"]);
+      toast.success(signupData["message"]);
     }
   };
 
@@ -64,6 +65,7 @@ function SignUp() {
       />
       {error && <p style={{ color: "red" }}>{error}</p>}
       <button className="signup-btn bold">Signup</button>
+      <Toaster />
     </form>
   );
 }
