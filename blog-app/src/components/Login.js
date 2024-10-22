@@ -11,7 +11,6 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // event.target.value = "";
 
     let error = "";
     switch (true) {
@@ -44,7 +43,7 @@ function Login() {
       const token = loginData.body.token;
       localStorage.setItem("authToken", token);
 
-      console.log(loginData.body.token, "token checkkkk");
+      console.log("token: ", loginData.body.token, "token checkkkk");
 
       // clear form after loggedIn
       setEmail("");

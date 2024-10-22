@@ -12,31 +12,45 @@ function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    let error = "";
     // Validation logic
-    if (!email || !password) {
-      setError("Both fields are required");
-    } else if (!email.includes("@gmail.com")) {
-      setError("Email must contain @gmail.com");
-    } else if (password.length < 6) {
-      setError("Password must be at least 6 characters long");
-    } else {
-      setError(""); // Clear the error if validation passes
+    switch (true) {
+      case !email || !password:
+        error = "Both fields are required";
+        break;
+      case !email.includes("@gmail.com"):
+        error = "Email must contain @gmail.com";
+        break;
+      case password.length < 6:
+        error = "Password must be at least 6 characters long";
+        setPassword("");
+        break;
+      default:
+        error = "";
+    }
+    setError(error);
 
-      // Proceed with form submission logic
-      console.log(signupMessage, { email, password });
+    // Only signup if there's no error
+    if (error === "") {
       signup({ email, password });
     }
+
+    console.log(signupMessage, { email, password });
   };
 
   const signup = async (data) => {
-    // console.log(data, "dataaaaaaa")
-    const signupData = await ApiService.postReq(signupURL, data);
-    if (signupData["error"]) {
-      setSignupMessage(signupData["message"]);
-      toast.error(signupData["message"]);
-    } else {
-      setSignupMessage(signupData["message"]);
-      toast.success(signupData["message"]);
+    try {
+      const signupData = await ApiService.postReq(signupURL, data);
+      if (signupData["error"]) {
+        toast.error(signupData["message"]);
+        setSignupMessage(signupData["message"]);
+      } else {
+        toast.success(signupData["message"]);
+        setSignupMessage(signupData["message"]);
+      }
+    } catch (error) {
+      console.error("Signup error", error);
+      toast.error("Something went wrong. Please try again later.");
     }
   };
 
